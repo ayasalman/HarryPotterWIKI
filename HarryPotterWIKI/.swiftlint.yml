@@ -1,0 +1,34 @@
+disabled_rules:  # Rules turned on by default to exclude from running
+  - colon
+  - comma
+  - control_statement
+
+opt_in_rules:  # Some rules are turned off by default, so you need to opt-in
+  - empty_count  # Find all the available rules by running: `swiftlint rules`
+
+analyzer_rules:  # Rules run by `swiftlint analyze`
+  - explicit_self
+
+# Case-sensitive paths to include during linting. Directory paths supplied on the
+# command line will be ignored.
+included:
+
+  - HarryPotterWIKI
+  - Sources  # Ensure this points to the correct directory with your .swift files
+  
+excluded:  # Case-sensitive paths to ignore during linting. Takes precedence over `included`
+  - Carthage
+  - Pods
+  
+# If true, SwiftLint will not fail if no lintable files are found.
+allow_zero_lintable_files: false  # Set to false to fail if no files are found
+
+# If true, SwiftLint will treat all warnings as errors.
+strict: false
+
+# If true, SwiftLint will treat all errors as warnings.
+lenient: false
+
+# Disabled baseline configurations as it's not needed for now
+# baseline: Baseline.json  # Uncomment if you need to use a baseline file
+# write_baseline: Baseline.json  #

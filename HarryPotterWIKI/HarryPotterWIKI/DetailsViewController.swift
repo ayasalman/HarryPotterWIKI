@@ -13,13 +13,7 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    
     }
-    
-
- 
-    
-
 }
 
 class Line: UIView {
@@ -31,7 +25,6 @@ class Line: UIView {
         let offset: CGFloat = 50
         line.move(to: CGPoint(x: 0, y: bounds.height / 2 + offset))
         line.addLine(to: CGPoint(x: bounds.width, y: bounds.height / 2 + offset))
-        
         UIColor.white.setStroke()
         line.lineWidth = 1
         line.stroke()
@@ -41,5 +34,3 @@ class Line: UIView {
         drawLine()
     }
 }
-
-
