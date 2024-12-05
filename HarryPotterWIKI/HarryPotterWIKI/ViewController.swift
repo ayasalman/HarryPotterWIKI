@@ -6,25 +6,47 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var characterstableView: UITableView!
     var arrCharacters = [Characters]()
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        
+        fetchData()
         characterstableView.delegate = self
         characterstableView.dataSource = self
         let albusPotter = Characters(image: UIImage(named: "AlbusPotter")!,
                                      name: "AlbusPotter", sort: "Human", dateOfBirth: "1998")
-
+        
         for _ in 1...12 {
             arrCharacters.append(albusPotter)
         }
-
     }
-}
+    
+    func fetchData() {
+        // Function body
+        let url = "https://api.potterdb.com/v1/characters"
+
+        // Make the request
+        AF.request(url).response { response in
+            switch response.result {
+            case .success(let data):
+                if let data = data {
+                    print("Response Data: \(String(data: data, encoding: .utf8) ?? "No data")")
+                }
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+        }
+    }
 
 extension ViewController: UITableViewDelegate {
 }
